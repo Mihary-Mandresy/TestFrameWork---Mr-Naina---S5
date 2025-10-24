@@ -1,30 +1,32 @@
 package app;
 
-import java.lang.reflect.Method;
+import java.util.List;
 
-import com.mhframework.annotation.UrlMapping;
+import com.mhframework.annotation.classes.ClassMapping;
 
-import controller.TestController;
-
+import utils.PackageScanner;
 
 public class App {
     public static void main(String[] args) {
-        String path = "/bye";
-        try {
-            TestController testController = new TestController();
-            Class<?> cls = testController.getClass();
 
-            for (Method method : cls.getDeclaredMethods()) {
-                UrlMapping urlMapping = method.getAnnotation(UrlMapping.class);
-                if (urlMapping != null) {
-                    String url = urlMapping.value();
-                    if (url.equals(path)) {
-                        method.invoke(testController);
-                    }
+        try {
+            String packageName = "TestClassMapping";
+            List<Class<?>> classes = PackageScanner.getClasses(packageName);
+
+            System.out.println("Les classes qui avait l'annotation : ");
+
+            for (Class<?> cls : classes) {
+                ClassMapping classMapping = cls.getAnnotation(ClassMapping.class);
+                if (classMapping == null) {
+                    continue;
                 }
+
+                System.out.println(cls.getSimpleName());
             }
+
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            e.printStackTrace();
         }
+
     }
 }
