@@ -1,9 +1,5 @@
 package app;
 
-import java.util.List;
-
-import com.mhframework.annotation.classes.ClassMapping;
-
 import utils.PackageScanner;
 
 public class App {
@@ -11,22 +7,13 @@ public class App {
 
         try {
             String packageName = "TestClassMapping";
-            List<Class<?>> classes = PackageScanner.getClasses(packageName);
 
-            System.out.println("Les classes qui avait l'annotation : ");
+            PackageScanner packageScanner = new PackageScanner(packageName);
 
-            for (Class<?> cls : classes) {
-                ClassMapping classMapping = cls.getAnnotation(ClassMapping.class);
-                if (classMapping == null) {
-                    continue;
-                }
-
-                System.out.println(cls.getSimpleName());
-            }
+            packageScanner.getClassAnnote().forEach(e -> System.out.println(e.getSimpleName()));
 
         } catch (Exception e) {
             e.printStackTrace();
         }
-
     }
 }
