@@ -7,9 +7,25 @@ import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.List;
 
+import com.mhframework.annotation.classes.Controller;
+
 public class PackageScanner {
 
-    public static List<Class<?>> getClasses(String packageName) throws ClassNotFoundException, IOException {
+    private String packageName;
+
+    public PackageScanner(String packageName) {
+        this.packageName = packageName;
+    }
+
+    public List<Class<?>> getClassAnnote() throws Exception {
+        List<Class<?>> filtreClass = getClasses()
+                .stream()
+                .filter(e -> e.getAnnotation(Controller.class) != null)
+                .toList();
+        return filtreClass;
+    }
+
+    public List<Class<?>> getClasses() throws ClassNotFoundException, IOException {
         List<Class<?>> classes = new ArrayList<>();
         String path = packageName.replace('.', '/');
         ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
@@ -26,7 +42,7 @@ public class PackageScanner {
         return classes;
     }
 
-    private static List<Class<?>> findClasses(File directory, String packageName) throws ClassNotFoundException {
+    private List<Class<?>> findClasses(File directory, String packageName) throws ClassNotFoundException {
         List<Class<?>> classes = new ArrayList<>();
         File[] files = directory.listFiles();
         if (files == null)
@@ -44,4 +60,11 @@ public class PackageScanner {
         return classes;
     }
 
+    public String getPackageName() {
+        return packageName;
+    }
+
+    public void setPackageName(String packageName) {
+        this.packageName = packageName;
+    }
 }

@@ -1,8 +1,8 @@
 package TestClassMapping;
 
-import com.mhframework.annotation.classes.ClassMapping;
+import com.mhframework.annotation.classes.Controller;
 
-@ClassMapping
+@Controller
 public class Test1 {
     
 }
