@@ -1,16 +1,20 @@
 package app;
 
-import utils.PackageScanner;
+import java.util.List;
+
+// import utils.PackageScanner;
 
 public class App {
     public static void main(String[] args) {
-
         try {
-            String packageName = "TestClassMapping";
+            String pkg = "app";
 
-            PackageScanner packageScanner = new PackageScanner(packageName);
+            PackageScanner packageScanner = new PackageScanner(pkg);
 
-            packageScanner.getClassAnnote().forEach(e -> System.out.println(e.getSimpleName()));
+            List<Class<?>> classes = packageScanner.getProjectClasses();
+
+            classes.stream()
+                    .forEach(e -> System.out.println(e.getName()));
 
         } catch (Exception e) {
             e.printStackTrace();
