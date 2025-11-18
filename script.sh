@@ -10,7 +10,7 @@ NC='\033[0m'
 
 BUILD_PATH="bin/"
 LIBRARY_PATH="lib/"
-TOMCAT_PATH="$HOME/Documents/S2/Programmation/Tahina/Autre/apache-tomcat-10.1.28/"
+TOMCAT_PATH="$HOME/Documents/Server/apache-tomcat-10.1.49/"
 WEBAPPAS_PATH_LOCAL="src/webapps/"
 WEBAPPAS_PATH_SERVER="webapps/"
 WAR_NAME="TestFrameWork"

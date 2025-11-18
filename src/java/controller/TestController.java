@@ -7,12 +7,12 @@ import com.mhframework.annotation.classes.Controller;
 public class TestController {
     
     @UrlMapping("/hello")
-    public void hello() {
-        System.out.println("Hello");
+    public String hello() {
+        return "Hello jiaby";
     }
 
     @UrlMapping("/bye")
-    public void bye() {
-        System.out.println("Bye");
+    public String bye() {
+        return "Bye jiaby";
     }
 }
