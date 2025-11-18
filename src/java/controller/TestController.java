@@ -2,6 +2,7 @@ package controller;
 
 import com.mhframework.annotation.UrlMapping;
 import com.mhframework.annotation.classes.Controller;
+import com.mhframework.handler.view.ModelView;
 
 @Controller
 public class TestController {
@@ -12,7 +13,8 @@ public class TestController {
     }
 
     @UrlMapping("/bye")
-    public String bye() {
-        return "Bye jiaby";
+    public ModelView bye() {
+        ModelView modelView = new ModelView("baba.jsp");
+        return modelView;
     }
 }
