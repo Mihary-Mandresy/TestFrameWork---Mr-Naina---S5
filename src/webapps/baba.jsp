@@ -6,6 +6,14 @@
     <title>Baba</title>
 </head>
 <body>
-    <h1>Baba lesy eh</h1>
+
+    <h1>Listes couleurs : </h1>
+    <%
+        String[] colors = (String[]) request.getAttribute("couleur");
+
+        for (String color: colors) {
+            out.println("<li>" + color + "</li>");
+        }
+    %>
 </body>
 </html>

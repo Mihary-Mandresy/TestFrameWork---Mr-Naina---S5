@@ -6,7 +6,7 @@ import com.mhframework.handler.view.ModelView;
 
 @Controller
 public class TestController {
-    
+
     @UrlMapping("/hello")
     public String hello() {
         return "Hello jiaby";
@@ -15,6 +15,10 @@ public class TestController {
     @UrlMapping("/bye")
     public ModelView bye() {
         ModelView modelView = new ModelView("baba.jsp");
+
+        String[] couleur = { "rouge", "vert", "blue" };
+        modelView.addData("couleur", couleur);
+
         return modelView;
     }
 }
