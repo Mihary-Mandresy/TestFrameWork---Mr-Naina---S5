@@ -15,5 +15,12 @@
             out.println("<li>" + color + "</li>");
         }
     %>
+
+    <form action="hello">
+        <input type="text" name="langue" id="" value="Fr"><br>
+        <input type="text" name="nom" id="" value="Deraman"><br>
+        <input type="number" name="age" value="13" id=""><br>
+        <button type="submit">Valider</button>
+    </form>
 </body>
 </html>

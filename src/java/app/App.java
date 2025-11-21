@@ -1,20 +1,19 @@
 package app;
 
-import java.util.List;
-
-// import utils.PackageScanner;
+import java.lang.reflect.Method;
+import java.lang.reflect.Parameter;
 
 public class App {
     public static void main(String[] args) {
         try {
-            String pkg = "app";
+            Class<?> cls = TestBaba.class;
 
-            PackageScanner packageScanner = new PackageScanner(pkg);
+            Method method = cls.getMethod("kaiza", String.class, String.class);
+            Parameter[] parameters = method.getParameters();
 
-            List<Class<?>> classes = packageScanner.getProjectClasses();
-
-            classes.stream()
-                    .forEach(e -> System.out.println(e.getName()));
+            for(Parameter parameter : parameters) {
+                System.out.println(parameter.getName());
+            }
 
         } catch (Exception e) {
             e.printStackTrace();

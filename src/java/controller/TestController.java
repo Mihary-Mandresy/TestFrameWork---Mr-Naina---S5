@@ -8,7 +8,8 @@ import com.mhframework.handler.view.ModelView;
 public class TestController {
 
     @UrlMapping("/hello")
-    public String hello() {
+    public String hello(String langue, String nom, int age) {
+        System.out.println("Langue : " + langue + " , Nom = " + nom + " , Age : " + age);
         return "Hello jiaby";
     }
 
