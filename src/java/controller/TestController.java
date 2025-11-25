@@ -1,5 +1,6 @@
 package controller;
 
+import com.mhframework.annotation.ParamRequest;
 import com.mhframework.annotation.UrlMapping;
 import com.mhframework.annotation.classes.Controller;
 import com.mhframework.handler.view.ModelView;
@@ -8,8 +9,8 @@ import com.mhframework.handler.view.ModelView;
 public class TestController {
 
     @UrlMapping("/hello")
-    public String hello(String langue, String nom, int age) {
-        System.out.println("Langue : " + langue + " , Nom = " + nom + " , Age : " + age);
+    public String hello(String langue, String nom, @ParamRequest("kidoro") int taona) {
+        System.out.println("Langue : " + langue + " , Nom = " + nom + " , Age : " + taona);
         return "Hello jiaby";
     }
 
