@@ -23,4 +23,9 @@ public class TestController {
 
         return modelView;
     }
+
+    @UrlMapping("/semestres/{id}/etudiants/{idsemestre}")
+    public String mapKely() {
+        return "Map kely oh";
+    }
 }
