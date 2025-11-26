@@ -23,4 +23,10 @@ public class TestController {
 
         return modelView;
     }
+
+    @UrlMapping("/semestres/{id}/etudiants/{idsemestre}/{nom}")
+    public String mapKely(int id, int idSemestre, String nom) {
+        System.out.println("idSemestre : " + idSemestre + ", id : " + id + ", nom : " + nom);
+        return "Map kely oh";
+    }
 }
