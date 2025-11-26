@@ -3,6 +3,7 @@ package controller;
 import com.mhframework.annotation.ParamRequest;
 import com.mhframework.annotation.UrlMapping;
 import com.mhframework.annotation.classes.Controller;
+import com.mhframework.annotation.method.PostMapping;
 import com.mhframework.handler.view.ModelView;
 
 @Controller
@@ -22,5 +23,21 @@ public class TestController {
         modelView.addData("couleur", couleur);
 
         return modelView;
+    }
+
+    @UrlMapping("/semestres/{id}/etudiants/{idsemestre}/{nom}")
+    public String mapKely(int id, int idSemestre, String nom) {
+        System.out.println("idSemestre : " + idSemestre + ", id : " + id + ", nom : " + nom);
+        return "Map kely oh";
+    }
+
+    @UrlMapping("/test")
+    public String itoGet() {
+        return "Zany ny Get";
+    }
+
+    @PostMapping("/test")
+    public String itoPost() {
+        return "Zany ny post";
     }
 }
