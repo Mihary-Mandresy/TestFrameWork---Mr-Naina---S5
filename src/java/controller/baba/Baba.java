@@ -1,12 +1,12 @@
 package controller.baba;
 
-import com.mhframework.annotation.UrlMapping;
 import com.mhframework.annotation.classes.Controller;
+import com.mhframework.annotation.method.GetMapping;
 
 @Controller
 public class Baba {
     
-    @UrlMapping("/baba")
+    @GetMapping("/baba")
     public void baba() {
         
     }

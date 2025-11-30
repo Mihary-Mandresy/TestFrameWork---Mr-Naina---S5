@@ -22,5 +22,10 @@
         <input type="number" name="age" value="13" id=""><br>
         <button type="submit">Valider</button>
     </form>
+
+    <form action="test" method="POST">
+        <input type="text" name="nom" value="Babakely">
+        <button type="submit">Valider</button>
+    </form>
 </body>
 </html>

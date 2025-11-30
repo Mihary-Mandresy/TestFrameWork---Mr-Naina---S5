@@ -1,21 +1,21 @@
 package controller;
 
 import com.mhframework.annotation.ParamRequest;
-import com.mhframework.annotation.UrlMapping;
 import com.mhframework.annotation.classes.Controller;
+import com.mhframework.annotation.method.GetMapping;
 import com.mhframework.annotation.method.PostMapping;
 import com.mhframework.handler.view.ModelView;
 
 @Controller
 public class TestController {
 
-    @UrlMapping("/hello")
+    @GetMapping("/hello")
     public String hello(String langue, String nom, @ParamRequest("kidoro") int taona) {
         System.out.println("Langue : " + langue + " , Nom = " + nom + " , Age : " + taona);
         return "Hello jiaby";
     }
 
-    @UrlMapping("/bye")
+    @GetMapping("/bye")
     public ModelView bye() {
         ModelView modelView = new ModelView("baba.jsp");
 
@@ -25,19 +25,21 @@ public class TestController {
         return modelView;
     }
 
-    @UrlMapping("/semestres/{id}/etudiants/{idsemestre}/{nom}")
+    @GetMapping("/semestres/{id}/etudiants/{idSemestre}/{nom}")
     public String mapKely(int id, int idSemestre, String nom) {
         System.out.println("idSemestre : " + idSemestre + ", id : " + id + ", nom : " + nom);
         return "Map kely oh";
     }
 
-    @UrlMapping("/test")
-    public String itoGet() {
+    @GetMapping("/test")
+    public String itoGet(String nom) {
+        System.out.println("zany ny Nom : " + nom);
         return "Zany ny Get";
     }
 
     @PostMapping("/test")
-    public String itoPost() {
+    public String itoPost(String nom) {
+        System.out.println("zany ny Nom : " + nom);
         return "Zany ny post";
     }
 }
