@@ -7,7 +7,8 @@ import com.mhframework.annotation.method.GetMapping;
 import com.mhframework.annotation.method.PostMapping;
 import com.mhframework.handler.view.ModelView;
 
-import dto.PersonneDto;
+// import dto.PersonneDto;
+import dto.VoitureDto;
 
 @Controller
 public class MapTestController {
@@ -26,9 +27,15 @@ public class MapTestController {
     }
 
     @PostMapping("/dto")
-    public String testDTO(PersonneDto personneDto) {
+    public String testDTO(VoitureDto v) {
 
-        System.out.println(personneDto);
+        // for (PersonneDto p : prs) {
+        //     System.out.println(p);
+        // }
+
+        System.out.println(v);
+
+        // System.out.println(prs);
 
         return "Test DTO Oh";
     }
