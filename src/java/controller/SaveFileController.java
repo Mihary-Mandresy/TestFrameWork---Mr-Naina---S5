@@ -1,5 +1,7 @@
 package controller;
 
+import java.io.File;
+
 import com.mhframework.annotation.ParamRequest;
 import com.mhframework.annotation.classes.Controller;
 import com.mhframework.annotation.method.GetMapping;
@@ -16,9 +18,28 @@ public class SaveFileController {
     }
 
     @PostMapping("/save")
-    public String postSave(@ParamRequest("file") MultpartFile multpartFile) {
+    public String postSave(@ParamRequest("file") MultpartFile[] multpartFile, MultpartFile fileKely) {
 
-        System.out.println(multpartFile.getPart().getSubmittedFileName());
+        String path = "/home/mihary/Documents/Server/apache-tomcat-10.1.49/webapps/TestFrameWork/deployement";
+
+        System.out.println("Save : ");
+
+        File file = new File(path);
+
+        if (file.exists()) {
+            file.mkdir();
+        }
+
+        try {
+            for (int a = 0; a < multpartFile.length; a++) {
+                multpartFile[a].save(path);
+                System.out.println("Save avec succes : index " + (a + 1));
+            }
+
+            fileKely.save(path);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         return "Save izy zany";
     }

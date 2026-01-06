@@ -15,6 +15,8 @@
         <form action="" method="post" enctype="multipart/form-data">
             <div class="form-group">
                 <input name="file" type="file" multiple>
+
+                <input name="fileKely" type="file">
             </div>
             <button type="submit">Valider</button>
         </form>
