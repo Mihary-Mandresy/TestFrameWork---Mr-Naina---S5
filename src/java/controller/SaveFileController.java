@@ -1,8 +1,13 @@
 package controller;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.util.List;
+import java.util.Map;
 
-import com.mhframework.annotation.ParamRequest;
 import com.mhframework.annotation.classes.Controller;
 import com.mhframework.annotation.method.GetMapping;
 import com.mhframework.annotation.method.PostMapping;
@@ -18,25 +23,49 @@ public class SaveFileController {
     }
 
     @PostMapping("/save")
-    public String postSave(@ParamRequest("file") MultpartFile[] multpartFile, MultpartFile fileKely) {
+    public String postSave(Map<String, List<MultpartFile>> multpart) {
+        
 
         String path = "/home/mihary/Documents/Server/apache-tomcat-10.1.49/webapps/TestFrameWork/deployement";
 
         System.out.println("Save : ");
 
         File file = new File(path);
+    
 
         if (file.exists()) {
             file.mkdir();
+
         }
 
         try {
-            for (int a = 0; a < multpartFile.length; a++) {
-                multpartFile[a].save(path);
-                System.out.println("Save avec succes : index " + (a + 1));
+
+            List<MultpartFile> list;
+            File fl; FileOutputStream fileOutputStream = null;
+
+            for (String key : multpart.keySet()) {
+                list = multpart.get(key);
+
+                System.out.println("Name :" + key);
+
+                for (MultpartFile multpartFile : list) {
+
+                    String filename = file.getAbsolutePath() + File.separator + multpartFile.getName() + "_" + System.currentTimeMillis() + "." + multpartFile.getExtension();
+
+                    System.out.println(filename);
+
+                    fl = new File(filename);
+
+                    fl.createNewFile();
+
+                    fileOutputStream = new FileOutputStream(fl);
+                    fileOutputStream.write(multpartFile.getBytes());
+
+                }
             }
 
-            fileKely.save(path);
+            if (fileOutputStream != null) fileOutputStream.close();
+
         } catch (Exception e) {
             e.printStackTrace();
         }
