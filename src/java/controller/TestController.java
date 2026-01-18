@@ -1,9 +1,9 @@
 package controller;
 
-import com.mhframework.annotation.ParamRequest;
 import com.mhframework.annotation.classes.Controller;
 import com.mhframework.annotation.method.GetMapping;
 import com.mhframework.annotation.method.PostMapping;
+import com.mhframework.annotation.param.ParamRequest;
 import com.mhframework.handler.view.ModelView;
 
 @Controller
