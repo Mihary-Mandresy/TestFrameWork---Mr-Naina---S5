@@ -1,26 +1,30 @@
 package app;
 
-import com.fatboyindustrial.gsonjavatime.Converters;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.mhframework.utils.JsonResult;
-
-import dto.MatiereDto;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class App {
 
     public static void main(String[] args) throws Exception {
-        Gson gson = Converters.registerAll(new GsonBuilder()).create();
+        String name = "dfd.dfdf.dfdf.immg";
 
-        JsonResult jsonResult = new JsonResult();
+        Pattern pattern = Pattern.compile("(?<filename>.+)\\.(?<ext>.+)");
+        Matcher matcher = pattern.matcher(name);
 
-        MatiereDto[] matiereDtos = new MatiereDto[] {
-            new MatiereDto("SVT", 6), 
-            new MatiereDto("MATH", 10)
-        };
 
-        jsonResult.setData(matiereDtos);
+        if (matcher.matches()) {
+            System.out.println("eny");
+            System.out.println(matcher.group("filename") + "    " + matcher.group("exts"));
+        }
 
-        System.out.println(gson.toJson(jsonResult));
+        // System.out.println(splt.length);
+
+        // if (splt.length < 1) {
+        //     System.out.println("vide");
+        // } else {
+        //     for (String string : splt) {
+        //         System.out.println(string);
+        //     }
+        // }
     }
 }
